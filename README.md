@@ -6,7 +6,7 @@ A simple cross platform .resx editor with designer.cs generation.
 
 Please click the link below corresponding to your operating system and follow installer instructions.
 
--   [Mac](https://raw.githubusercontent.com/justjcurtis/Resy/master/dist/Resy-0.0.1.dmg)
+-   [Mac](https://raw.githubusercontent.com/justjcurtis/Resy/master/dist/Resy-0.0.2.dmg)
 -   Windows - coming soon..
 -   Linux - coming soon also..
 

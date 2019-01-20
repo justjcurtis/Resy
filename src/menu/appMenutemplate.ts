@@ -13,7 +13,7 @@ export var appMenuTemplate = {
 		},
 		{
 			label: "Quit",
-			accelerator: "CmdOrCtrl+x",
+			accelerator: "CmdOrCtrl+q",
 			click: function() {
 				rendererChannel().send("closing");
 				app.quit();

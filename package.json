@@ -1,6 +1,6 @@
 {
 	"name": "Resy",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"license": "MIT",
 	"description": "a cross platform resx editor with designer.cs generation",
 	"author": "Jacson Curtis <justjcurtis@gmail.com>",
