@@ -19,7 +19,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Authors
 
--   **JacsonCurtis** - _Initial work_ - [justjcurtis](https://github.com/justjcurtis)
+-   **Jacson Curtis** - _Initial work_ - [justjcurtis](https://github.com/justjcurtis)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
