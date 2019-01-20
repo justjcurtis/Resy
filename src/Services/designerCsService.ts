@@ -30,7 +30,7 @@ function getDesignerNamespace() {
 		var desPath = designerPath();
 		if (designerPath !== null) {
 			try {
-				var desData = readFileSync("desPath").toString();
+				var desData = readFileSync(desPath).toString();
 				if (desData !== undefined) {
 					var namespacestart = desData.indexOf("namespace ") + 10;
 					var namespaceend = desData.indexOf(" {");
