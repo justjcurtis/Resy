@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link
+			rel="stylesheet"
+			href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+		/>
+		<link rel="stylesheet" href="src/main.css" />
+		<link rel="stylesheet" href="src/cover.css" />
+		<script>
+			window.$ = window.jQuery = require("jquery");
+		</script>
+		<title>Resy</title>
+	</head>
+	<body>
+		<div id="cover" class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="container">
+					<div class="inner cover">
+						<h1 class="cover-heading">Welcome to Resy.</h1>
+						<p class="lead">
+							<p>Choose a file to edit with Cmd+O or Ctrl+O</p>
+							<p>Start a new file with Cmd+N or Ctrl+N</p>
+						</p>
+						<div id="lf-container">
+							<hr />
+							<p class="lead">
+								<p>Pick up where you left off</p>
+								<a
+									id="lf-btn"
+									href="#"
+									class="btn btn-lg btn-default"
+									>Last File Name</a
+								>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table
+			class="table table-striped table-bordered table-resizable"
+			id="mainTable"
+		>
+			<thead class="thead-dark">
+				<tr>
+					<th id="nr">#</th>
+					<th id="name">Name</th>
+					<th id="value">Value</th>
+					<th id="comment">Comment</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</body>
+
+	<script src="resizableTable.js"></script>
+
+	<script>
+		var exports = {};
+		// You can also require other files to run in this process
+		require("./dist/renderer.js");
+	</script>
+</html>

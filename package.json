@@ -1,0 +1,79 @@
+{
+	"name": "Resy",
+	"version": "0.0.1",
+	"license": "MIT",
+	"description": "a cross platform resx editor with designer.cs generation",
+	"author": "Jacson Curtis <justjcurtis@gmail.com>",
+	"repository": "https://github.com/justjcurtis/Resy",
+	"keywords": [
+		"Electron",
+		"resx",
+		"editor",
+		"typescript",
+		"resource",
+		"cross",
+		"platform"
+	],
+	"main": "./dist/main.js",
+	"homepage": "./index.html",
+	"scripts": {
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder",
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "tslint -c tslint.json -p tsconfig.json",
+		"start": "npm run build && electron ./dist/main.js"
+	},
+	"build": {
+		"files": [
+			"./build/*",
+			"./dist/*.js",
+			"./dist/*/*.js",
+			"./*.html",
+			"./*.js",
+			"./src/*.css"
+		],
+		"appId": "com.justjcurtis.resy",
+		"mac": {
+			"icon": "./build/icon.icns"
+		},
+		"dmg": {
+			"contents": [
+				{
+					"x": 200,
+					"y": 190
+				},
+				{
+					"x": 500,
+					"y": 190,
+					"type": "link",
+					"path": "/Applications"
+				}
+			],
+			"icon": "./build/icon.icns"
+		},
+		"linux": {
+			"target": [
+				"AppImage",
+				"deb"
+			]
+		},
+		"win": {
+			"target": "NSIS",
+			"icon": "build/icon.ico"
+		}
+	},
+	"devDependencies": {
+		"electron": "^2.0.2",
+		"electron-builder": "^20.38.5",
+		"tslint": "^5.10.0",
+		"typescript": "^2.8.3"
+	},
+	"dependencies": {
+		"bootstrap": "^4.2.1",
+		"electron-store": "^2.0.0",
+		"jquery": "^3.3.1",
+		"popper.js": "^1.14.6",
+		"xml-js": "^1.6.9"
+	}
+}
