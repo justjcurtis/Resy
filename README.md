@@ -17,10 +17,6 @@ End with an example of getting some data out of the system or using it for a lit
 -   [Electron-Typescript](https://github.com/electron/electron-quick-start-typescript) - The cross-platform framework used
 -   [npm](https://www.npmjs.com) - Dependency Management
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
 -   **JacsonCurtis** - _Initial work_ - [justjcurtis](https://github.com/justjcurtis)
