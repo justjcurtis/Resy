@@ -32,7 +32,6 @@ ipc.on("newFile", function() {
 	newFile();
 });
 ipc.on("openFile", () => {
-	console.log("hit open");
 	openFile();
 });
 ipc.on("saveFile", () => {

@@ -33,7 +33,7 @@ function showCover() {
 				try {
 					currentResx = readResxFromFile(path);
 				} catch (error) {
-					console.log("couldn't load : " + path);
+					throw ("couldn't load : " + path);
 				}
 			} else {
 				tableView(xmlToResxObj(currentResx));

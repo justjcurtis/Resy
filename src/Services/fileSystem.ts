@@ -7,9 +7,12 @@ import { tableView } from "./NavigationService";
 import {
 	currentTableToResxRaw,
 	trimEmptyRows,
-	currentTableDatums
+	datumsFromTable,
+	currentTableData,
+	tableToResxRaw
 } from "./tableService";
 import { designerPath, designerFromDatum } from "./designerCsService";
+import { tableToCsv, csvToTableData } from "./csvService";
 
 export function newFile() {
 	deleteSetting("lastFile");
@@ -18,12 +21,15 @@ export function newFile() {
 }
 
 export function openFile() {
-	console.log("calling main");
 	ipcRenderer.send("showOpenDialog");
-	console.log("called");
 	ipcRenderer.once("openDialogResult", function(event: Event, path: string) {
 		saveSetting("lastFile", path);
-		var data = readResxFromFile(path);
+		var data : string;
+		if(getExtensionFromPath(path)=="resx"){
+			data = readResxFromFile(path);
+		}else{
+			data = readCsvFromFile(path);
+		}
 		tableView(xmlToResxObj(data));
 	});
 }
@@ -32,6 +38,14 @@ export function readResxFromFile(path: string) {
 	var data = readFileSync(path);
 	saveSetting("currentResx", data.toString());
 	return data.toString();
+}
+
+export function readCsvFromFile(path: string) {
+	var csv = readFileSync(path);
+	var data = csvToTableData(csv.toString());
+	var rawResx = tableToResxRaw(data);
+	saveSetting("currentResx", rawResx);
+	return rawResx;
 }
 
 export function saveFile() {
@@ -53,9 +67,20 @@ export function storeTable() {
 
 export function saveTableToFile(path: string) {
 	var currentResx = storeTable();
-	writeFileSync(path, currentResx);
-	var desData = designerFromDatum(currentTableDatums());
-	writeFileSync(designerPath(), desData);
+	var ext = getExtensionFromPath(path);
+	if(ext == "resx"){
+		writeFileSync(path, currentResx);
+		var desData = designerFromDatum(datumsFromTable(currentTableData()));
+		writeFileSync(designerPath(), desData);
+	}else{
+		var csvData = tableToCsv(currentTableData());
+		writeFileSync(path, csvData);
+	}
+}
+
+export function getExtensionFromPath(path: string) {
+	var split = path.split('.');
+	return split[split.length-1];
 }
 
 export function saveFileAs() {

@@ -40,6 +40,7 @@ function createMenu() {
 		var menus: any[] = [appMenuTemplate];
 		menus.push(fileMenuTemplate);
 		menus.push(editMenuTemplate);
+		//menus.push(devMenuTemplate);
 		Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 	} else {
 		var menus: any[] = [fileMenuTemplate];

@@ -4,12 +4,11 @@ const electron = require("electron");
 const ipcMain = electron.ipcMain;
 
 ipcMain.on("showOpenDialog", (event: IpcMessageEvent) => {
-	console.log("got called");
 	dialog.showOpenDialog(
 		{
 			title: "Open Resx",
 			properties: ["openFile"],
-			filters: [{ name: "Resx", extensions: ["resx"] }]
+			filters: [{ name: "Resx", extensions: ["resx", "csv"] }]
 		},
 		paths => {
 			if (paths !== undefined) {
@@ -24,7 +23,7 @@ ipcMain.on("showSaveAsDialog", (event: IpcMessageEvent) => {
 	dialog.showSaveDialog(
 		{
 			title: "Save as..",
-			filters: [{ name: "Resx", extensions: ["resx"] }]
+			filters: [{ name: "Resx", extensions: ["resx", "csv"] }]
 		},
 		path => {
 			if (path !== undefined) {

@@ -2,9 +2,6 @@ import { Resx, Datum, resxHead, resxFoot } from "../models/resx";
 import { DatumsToXmlDatas } from "./xmlService";
 
 export function buildTableResx(resx: Resx) {
-	var table: HTMLTableElement = <HTMLTableElement>(
-		document.getElementById("mainTable")
-	);
 	var data = resx.root.data;
 	data.forEach(attribue => {
 		var comment = attribue.comment ? attribue.comment._text : "";
@@ -13,9 +10,6 @@ export function buildTableResx(resx: Resx) {
 	addRow();
 }
 export function buildTableStringArray(data: string[][]) {
-	var table: HTMLTableElement = <HTMLTableElement>(
-		document.getElementById("mainTable")
-	);
 	data.forEach(row => {
 		addRow(row[0], row[1], row[2] ? row[2] : "");
 	});
@@ -31,14 +25,10 @@ export function clearTable() {
 }
 
 export function rowHasContent(i: number) {
-	var table: HTMLTableElement = <HTMLTableElement>(
-		document.getElementById("mainTable")
-	);
 	var rowAtI = getRowAtI(i);
 
 	var nameField = <HTMLInputElement>rowAtI.children[1].firstElementChild;
 	var valueField = <HTMLInputElement>rowAtI.children[2].firstElementChild;
-	var commentField = <HTMLInputElement>rowAtI.children[3].firstElementChild;
 
 	return nameField.value !== "" && valueField.value !== "";
 }
@@ -91,8 +81,7 @@ export function currentTableData() {
 	return data;
 }
 
-export function currentTableDatums() {
-	var data = currentTableData();
+export function datumsFromTable(data:string[][]) {
 	var datums: Datum[] = [];
 	data.forEach(row => {
 		var xmlSpace = "preserve";
@@ -110,7 +99,11 @@ export function currentTableDatums() {
 }
 
 export function currentTableToResxRaw() {
-	var datums = currentTableDatums();
+	return tableToResxRaw(currentTableData());
+}
+
+export function tableToResxRaw(data:string[][]) {
+	var datums = datumsFromTable(data);
 	var head = resxHead();
 	var body = DatumsToXmlDatas(datums);
 	var foot = resxFoot();

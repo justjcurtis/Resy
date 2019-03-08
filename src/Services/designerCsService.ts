@@ -181,9 +181,5 @@ export function designerFromDatum(datum: Datum[]) {
 	var body = designerBodyFromDatum(datum);
 	var foot = designerFoot();
 
-	console.log(head);
-	console.log(body);
-	console.log(foot);
-
 	return head + body + foot;
 }
